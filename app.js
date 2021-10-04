@@ -29,7 +29,6 @@
 // 6. The `play` method should end (`return`) when the guess matches `secretNum`.
 
 
-
 const game = {
   title: 'Guess the Number!',
   biggestNum: 10,
@@ -43,10 +42,11 @@ const game = {
   play: function() {
     this.secretNum = Math.floor(Math.random() * (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
     do{ 
+  
       // establish the secret num
       this.prevGuess.push(this.getGuess())
+      this.render()
        // push into getGuess
-      // this.render()
     } while(this.prevGuess[this.prevGuess.length - 1] !== this.secretNum)
     console.log(this.prevGuess)
     // while current guess !== secret num, console log prev guess
@@ -63,22 +63,26 @@ const game = {
 },
 render(){
   if (this.prevGuess[this.prevGuess.length - 1] === parseInt(this.secretNum)) {
-    alert (`Congrats! You guess the number is ${this.prevGuesses.length} guesses`)
-  } else  {
-    if (this.prevGuess[this.prevGuess.length - 1] < parseInt(this.secretNum)) {
-      alert (`Your guess is too low! Previous guesses ${this.prevGuesses.join()} `) 
+    alert (`Congrats! You guess the number is ${this.prevGuess.length - 1} guesses`)
+  } else {
+    if (this.prevGuess[this.prevGuess.length - 1] < this.secretNum){
+      alert (`Your guess is too low! Previous guesses ${this.prevGuess.join()}`)
+    } else {
+      alert (`Your guess is too high! Previous guesses ${this.prevGuess.join()}`)
+    }
+  } 
+  
+  
+  
+  
+  // else {(this.prevGuess[this.prevGuess.length - 1] < parseInt(this.secretNum)) 
+  // alert (`Your guess is too low! Previous guesses ${this.prevGuess.join()} `)
+  // } if (this.prevGuess[this.prevGuess.length - 1] > parseInt(this.secretNum)) {
     
-  }    if (this.prevGuess[this.prevGuess.length - 1] > parseInt(this.secretNum)) {
-
-    alert (`Your guess is too high! Previous guesses ${this.prevGuesses.join()} `)
-
-
-  } }
-
+  // } else { alert (`Your guess is too high! Previous guesses ${this.prevGuess.join()}`)
+    
+  // }
 }
-
-
-
 
 }
 
