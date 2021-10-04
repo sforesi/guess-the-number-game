@@ -46,6 +46,7 @@ const game = {
       // establish the secret num
       this.prevGuess.push(this.getGuess())
        // push into getGuess
+      // this.render()
     } while(this.prevGuess[this.prevGuess.length - 1] !== this.secretNum)
     console.log(this.prevGuess)
     // while current guess !== secret num, console log prev guess
@@ -61,17 +62,18 @@ const game = {
     return currentGuess // invoke current guess
 },
 render(){
-  if ([this.prevGuess.length - 1] == this.secretNum) {
+  if (this.prevGuess[this.prevGuess.length - 1] === parseInt(this.secretNum)) {
     alert (`Congrats! You guess the number is ${this.prevGuesses.length} guesses`)
-  } else {([this.prevGuess.length - 1] < this.secretNum) 
-  alert (`Your guess is too low!`)
-  } if ([this.prevGuess.length - 1] > this.secretNum) {
+  } else  {
+    if (this.prevGuess[this.prevGuess.length - 1] < parseInt(this.secretNum)) {
+      alert (`Your guess is too low! Previous guesses ${this.prevGuesses.join()} `) 
     
-  } else { alert (`Your guess is too high!`)
-    
-  }
-    return render // invoke render
-  console.log(this.render)
+  }    if (this.prevGuess[this.prevGuess.length - 1] > parseInt(this.secretNum)) {
+
+    alert (`Your guess is too high! Previous guesses ${this.prevGuesses.join()} `)
+
+
+  } }
 
 }
 
@@ -81,4 +83,3 @@ render(){
 }
 
 game.play ()
-
